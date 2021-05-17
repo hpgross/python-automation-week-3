@@ -5,6 +5,7 @@ import locale
 import sys
 import emails
 import reports
+import os
 
 
 def load_data(filename):
