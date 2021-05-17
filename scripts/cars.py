@@ -83,13 +83,14 @@ def main(argv):
   print(summary)
   table_data = cars_dict_to_table(data)
 
-  reports.generate("cars.pdf","Sales summary for last month","<br/>".join(summary),table_data)
+  attach_path = "/tmp/cars.pdf"
+  reports.generate(attach_path,"Sales summary for last month","<br/>".join(summary),table_data)
 
   sender = "automation@example.com"
   receiver = "{}@example.com".format(os.environ.get('USER'))
   subject = "Sales summary for last month"
   body = "\n".join(summary)
-  attach_path = "/tmp/cars.pdf"
+  
 
   message = emails.generate(sender, receiver, subject, body, attach_path)
   emails.send(message)
