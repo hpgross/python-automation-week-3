@@ -46,8 +46,12 @@ def process_data(data):
     if item_sales > max_sales["total_sales"]:
       item["total_sales"] = item_sales
       max_sales = item
-    
-    sales_by_year[item_year] += item_sales
+
+    if item_year in sales_by_year.keys():
+      sales_by_year[item_year] += item_sales
+    else:
+      sales_by_year[item_year] = item_sales
+
     if sales_by_year[item_year] > max_sales_by_year[1]:
       max_sales_by_year = [item_year,sales_by_year[item_year]]
 
